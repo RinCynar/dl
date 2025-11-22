@@ -17,28 +17,6 @@ npm run build
 
 The `build` script copies `index.html` to `dist/` and generates `dist/file-index.json` by scanning the repository.
 
-Deploy to Cloudflare Pages
-
-1. In the Cloudflare Pages dashboard, connect this Git repository.
-2. Set the build command to:
-
-```
-npm run build
-```
-
-3. Set the **Publish directory** to:
-
-```
-dist
-```
-
-4. Save and deploy. Cloudflare Pages will run the build script and publish the `dist/` folder.
-
-Notes for Cloudflare Pages:
-
-- The build script runs `build.js` which uses `generate_index.js` (so it requires Node.js in the Pages build environment). The script scans the repository files and writes `file-index.json` into `dist/` so the site can use local JSON without calling the GitHub API.
-- If you prefer not to generate `file-index.json` during build, you can instead publish the repository root and let the front-end call the GitHub API directly (works for public repos but has rate limits).
-
 Manual generation (optional)
 
 If you want to generate `file-index.json` locally (without running the full build):

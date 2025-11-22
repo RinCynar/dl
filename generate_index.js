@@ -38,7 +38,12 @@ function buildIndex(root){
 }
 
 if(require.main === module){
-  const root = process.cwd();
+  const root = path.join(process.cwd(), 'file');
+  if(!fs.existsSync(root)){
+    console.error(`Error: Directory 'file' not found in ${process.cwd()}`);
+    console.error(`Please create the 'file' directory and place files to be indexed inside it.`);
+    process.exit(1);
+  }
   const idx = buildIndex(root);
   console.log(JSON.stringify(idx, null, 2));
 }

@@ -137,8 +137,8 @@
 
     function setPath(p){ currentPath = p.replace(/^\/+|\/+$/g,''); pathEl.textContent = '/' + (currentPath||''); }
 
-    function toRawUrl(path){ return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${encodeURIComponent(path)}` }
-    function toGithubUrl(path){ return `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${encodeURIComponent(path)}` }
+    function toRawUrl(path){ return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}` }
+    function toGithubUrl(path){ return `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}` }
 
     async function fetchGithubContents(path){
       const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`;
@@ -203,24 +203,34 @@
       if(useGithubApi){
         try{
           const data = await fetchGithubContents(path||'');
-          // GitHub returns array of objects for directories; files include name,type,size,path
           const items = data.map(d=>({name:d.name,type:d.type,path:d.path,size:d.size||0}));
-          renderList(items);
-          cache[(path||'')]=items;
+          cache[(path||'')] = items;
+
+          if (path) {
+            const parentPath = path.lastIndexOf('/') > -1 ? path.substring(0, path.lastIndexOf('/')) : '';
+            const upItem = { name: '..', type: 'dir', path: parentPath, size: 0 };
+            renderList([upItem, ...items]);
+          } else {
+            renderList(items);
+          }
           return;
         }catch(e){
           console.warn('GitHub API failed:',e);
-          // fallthrough to local index
         }
       }
 
-      // local index fallback
       try{
         const idx = await fetchLocalIndex();
-        // idx is expected mapping from path -> entries [{name,type,path,size}]
         const key = (path||'');
         const items = idx[key] || [];
-        renderList(items);
+
+        if (key) {
+            const parentPath = key.lastIndexOf('/') > -1 ? key.substring(0, key.lastIndexOf('/')) : '';
+            const upItem = { name: '..', type: 'dir', path: parentPath, size: 0 };
+            renderList([upItem, ...items]);
+        } else {
+            renderList(items);
+        }
         return;
       }catch(e){
         console.error('local index failed',e);
