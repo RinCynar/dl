@@ -141,7 +141,8 @@
     function toGithubUrl(path){ return `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}` }
 
     async function fetchGithubContents(path){
-      const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`;
+      const apiPath = 'file' + (path ? `/${path}` : '');
+      const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${apiPath}?ref=${BRANCH}`;
       const res = await fetch(api);
       if(!res.ok) throw new Error('GitHub API error: ' + res.status);
       return await res.json();
@@ -203,7 +204,12 @@
       if(useGithubApi){
         try{
           const data = await fetchGithubContents(path||'');
-          const items = data.map(d=>({name:d.name,type:d.type,path:d.path,size:d.size||0}));
+          const items = data.map(d=>({
+            name: d.name,
+            type: d.type,
+            path: d.path.startsWith('file/') ? d.path.substring(5) : d.path,
+            size:d.size||0
+          }));
           cache[(path||'')] = items;
 
           if (path) {
