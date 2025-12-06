@@ -10,66 +10,742 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --primary:#6750a4;
-      --radius:12px;
-      font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial;
+    /* ========================================
+       Material You Design System
+       ======================================== */
+    
+    :root {
+      /* Primary Color */
+      --md-sys-color-primary: #6750A4;
+      --md-sys-color-on-primary: #FFFFFF;
+      --md-sys-color-primary-container: #EADDFF;
+      --md-sys-color-on-primary-container: #21005D;
+      
+      /* Secondary Color */
+      --md-sys-color-secondary: #625B71;
+      --md-sys-color-on-secondary: #FFFFFF;
+      --md-sys-color-secondary-container: #E8DEF8;
+      --md-sys-color-on-secondary-container: #1D192B;
+      
+      /* Tertiary Color */
+      --md-sys-color-tertiary: #7D5260;
+      --md-sys-color-on-tertiary: #FFFFFF;
+      --md-sys-color-tertiary-container: #FFD8E4;
+      --md-sys-color-on-tertiary-container: #31111D;
+      
+      /* Error Color */
+      --md-sys-color-error: #B3261E;
+      --md-sys-color-on-error: #FFFFFF;
+      --md-sys-color-error-container: #F9DEDC;
+      --md-sys-color-on-error-container: #410E0B;
+      
+      /* Spacing Scale (4dp grid) */
+      --md-sys-spacing-1: 4px;
+      --md-sys-spacing-2: 8px;
+      --md-sys-spacing-3: 12px;
+      --md-sys-spacing-4: 16px;
+      --md-sys-spacing-5: 20px;
+      --md-sys-spacing-6: 24px;
+      --md-sys-spacing-8: 32px;
+      --md-sys-spacing-10: 40px;
+      --md-sys-spacing-12: 48px;
+      
+      /* Border Radius */
+      --md-sys-shape-corner-none: 0px;
+      --md-sys-shape-corner-extra-small: 4px;
+      --md-sys-shape-corner-small: 8px;
+      --md-sys-shape-corner-medium: 12px;
+      --md-sys-shape-corner-large: 16px;
+      --md-sys-shape-corner-extra-large: 28px;
+      --md-sys-shape-corner-full: 9999px;
+      
+      /* Elevation Shadows */
+      --md-sys-elevation-0: none;
+      --md-sys-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      --md-sys-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+      --md-sys-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+      --md-sys-elevation-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+      --md-sys-elevation-5: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+      
+      /* Typography Scale */
+      --md-sys-typescale-display-large-font-size: 57px;
+      --md-sys-typescale-display-large-line-height: 64px;
+      --md-sys-typescale-display-large-font-weight: 400;
+      
+      --md-sys-typescale-headline-large-font-size: 32px;
+      --md-sys-typescale-headline-large-line-height: 40px;
+      --md-sys-typescale-headline-large-font-weight: 400;
+      
+      --md-sys-typescale-headline-medium-font-size: 28px;
+      --md-sys-typescale-headline-medium-line-height: 36px;
+      --md-sys-typescale-headline-medium-font-weight: 400;
+      
+      --md-sys-typescale-headline-small-font-size: 24px;
+      --md-sys-typescale-headline-small-line-height: 32px;
+      --md-sys-typescale-headline-small-font-weight: 400;
+      
+      --md-sys-typescale-title-large-font-size: 22px;
+      --md-sys-typescale-title-large-line-height: 28px;
+      --md-sys-typescale-title-large-font-weight: 400;
+      
+      --md-sys-typescale-title-medium-font-size: 16px;
+      --md-sys-typescale-title-medium-line-height: 24px;
+      --md-sys-typescale-title-medium-font-weight: 500;
+      
+      --md-sys-typescale-title-small-font-size: 14px;
+      --md-sys-typescale-title-small-line-height: 20px;
+      --md-sys-typescale-title-small-font-weight: 500;
+      
+      --md-sys-typescale-body-large-font-size: 16px;
+      --md-sys-typescale-body-large-line-height: 24px;
+      --md-sys-typescale-body-large-font-weight: 400;
+      
+      --md-sys-typescale-body-medium-font-size: 14px;
+      --md-sys-typescale-body-medium-line-height: 20px;
+      --md-sys-typescale-body-medium-font-weight: 400;
+      
+      --md-sys-typescale-body-small-font-size: 12px;
+      --md-sys-typescale-body-small-line-height: 16px;
+      --md-sys-typescale-body-small-font-weight: 400;
+      
+      --md-sys-typescale-label-large-font-size: 14px;
+      --md-sys-typescale-label-large-line-height: 20px;
+      --md-sys-typescale-label-large-font-weight: 500;
+      
+      --md-sys-typescale-label-medium-font-size: 12px;
+      --md-sys-typescale-label-medium-line-height: 16px;
+      --md-sys-typescale-label-medium-font-weight: 500;
+      
+      --md-sys-typescale-label-small-font-size: 11px;
+      --md-sys-typescale-label-small-line-height: 16px;
+      --md-sys-typescale-label-small-font-weight: 500;
+      
+      /* Motion Easing */
+      --md-sys-motion-easing-standard: cubic-bezier(0.2, 0.0, 0, 1.0);
+      --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0.0, 0, 1.0);
+      --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1.0);
+      --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0.0, 0.8, 0.15);
+      
+      /* Motion Duration */
+      --md-sys-motion-duration-short1: 50ms;
+      --md-sys-motion-duration-short2: 100ms;
+      --md-sys-motion-duration-short3: 150ms;
+      --md-sys-motion-duration-short4: 200ms;
+      --md-sys-motion-duration-medium1: 250ms;
+      --md-sys-motion-duration-medium2: 300ms;
+      --md-sys-motion-duration-medium3: 350ms;
+      --md-sys-motion-duration-medium4: 400ms;
+      --md-sys-motion-duration-long1: 450ms;
+      --md-sys-motion-duration-long2: 500ms;
+      
+      /* Font Family */
+      font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 
-    /* Light theme variables */
-    :root[data-theme="light"]{
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --on-card:#111827;
-      --on-primary:#ffffff;
-      --muted:#6b6b6b;
-      --text:#111827;
+    /* Light Theme */
+    :root[data-theme="light"] {
+      --md-sys-color-surface: #FEF7FF;
+      --md-sys-color-on-surface: #1D1B20;
+      --md-sys-color-surface-variant: #E7E0EC;
+      --md-sys-color-on-surface-variant: #49454F;
+      --md-sys-color-surface-container-lowest: #FFFFFF;
+      --md-sys-color-surface-container-low: #F7F2FA;
+      --md-sys-color-surface-container: #F3EDF7;
+      --md-sys-color-surface-container-high: #ECE6F0;
+      --md-sys-color-surface-container-highest: #E6E0E9;
+      --md-sys-color-surface-dim: #DED8E1;
+      --md-sys-color-surface-bright: #FEF7FF;
+      --md-sys-color-outline: #79747E;
+      --md-sys-color-outline-variant: #CAC4D0;
+      --md-sys-color-shadow: #000000;
+      --md-sys-color-scrim: #000000;
+      --md-sys-color-inverse-surface: #322F35;
+      --md-sys-color-inverse-on-surface: #F5EFF7;
+      --md-sys-color-inverse-primary: #D0BCFF;
+      
+      /* State Layers */
+      --md-sys-state-hover-opacity: 0.08;
+      --md-sys-state-focus-opacity: 0.12;
+      --md-sys-state-pressed-opacity: 0.12;
+      --md-sys-state-dragged-opacity: 0.16;
     }
 
-    /* Dark theme variables (default) */
-    :root[data-theme="dark"], :root:not([data-theme]){
-      --bg:#071025;
-      --card:#0f1724;
-      --on-card:#e6eef8;
-      --on-primary:#ffffff;
-      --muted:#9aa6bf;
-      --text:#e6eef8;
+    /* Dark Theme (Default) */
+    :root[data-theme="dark"], :root:not([data-theme]) {
+      --md-sys-color-surface: #141218;
+      --md-sys-color-on-surface: #E6E0E9;
+      --md-sys-color-surface-variant: #49454F;
+      --md-sys-color-on-surface-variant: #CAC4D0;
+      --md-sys-color-surface-container-lowest: #0F0D13;
+      --md-sys-color-surface-container-low: #1D1B20;
+      --md-sys-color-surface-container: #211F26;
+      --md-sys-color-surface-container-high: #2B2930;
+      --md-sys-color-surface-container-highest: #36343B;
+      --md-sys-color-surface-dim: #141218;
+      --md-sys-color-surface-bright: #3B383E;
+      --md-sys-color-outline: #938F99;
+      --md-sys-color-outline-variant: #49454F;
+      --md-sys-color-shadow: #000000;
+      --md-sys-color-scrim: #000000;
+      --md-sys-color-inverse-surface: #E6E0E9;
+      --md-sys-color-inverse-on-surface: #322F35;
+      --md-sys-color-inverse-primary: #6750A4;
+      
+      /* State Layers */
+      --md-sys-state-hover-opacity: 0.08;
+      --md-sys-state-focus-opacity: 0.12;
+      --md-sys-state-pressed-opacity: 0.12;
+      --md-sys-state-dragged-opacity: 0.16;
+      
+      /* Dark theme color overrides */
+      --md-sys-color-primary: #D0BCFF;
+      --md-sys-color-on-primary: #381E72;
+      --md-sys-color-primary-container: #4F378B;
+      --md-sys-color-on-primary-container: #EADDFF;
+      
+      --md-sys-color-secondary: #CCC2DC;
+      --md-sys-color-on-secondary: #332D41;
+      --md-sys-color-secondary-container: #4A4458;
+      --md-sys-color-on-secondary-container: #E8DEF8;
+      
+      --md-sys-color-tertiary: #EFB8C8;
+      --md-sys-color-on-tertiary: #492532;
+      --md-sys-color-tertiary-container: #633B48;
+      --md-sys-color-on-tertiary-container: #FFD8E4;
+      
+      --md-sys-color-error: #F2B8B5;
+      --md-sys-color-on-error: #601410;
+      --md-sys-color-error-container: #8C1D18;
+      --md-sys-color-on-error-container: #F9DEDC;
     }
 
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#071025);color:var(--text)}
-    header{display:flex;align-items:center;gap:12px;padding:20px 24px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#9a6df9);display:flex;align-items:center;justify-content:center;color:var(--on-primary);font-weight:700}
-    h1{font-size:18px;margin:0}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
+    /* ========================================
+       Base Styles
+       ======================================== */
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      font-size: var(--md-sys-typescale-body-medium-font-size);
+      line-height: var(--md-sys-typescale-body-medium-line-height);
+      font-weight: var(--md-sys-typescale-body-medium-font-weight);
+      transition: background-color var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+                  color var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--md-sys-spacing-6);
+    }
 
-    main{padding:20px 24px}
-    .search-row{display:flex;gap:12px;align-items:center;margin-bottom:16px}
-    .search{flex:1;background:var(--card);color:var(--on-card);padding:10px 12px;border-radius:12px;box-shadow:0 1px 0 rgba(0,0,0,0.03);display:flex;gap:8px;align-items:center}
-    .search input{border:0;outline:none;background:transparent;color:var(--on-card);font-size:14px;width:100%}
-    .controls{display:flex;gap:8px}
-    button.btn{border:0;padding:8px 12px;border-radius:10px;background:var(--primary);color:var(--on-primary);cursor:pointer;font-weight:500}
-    button.ghost{background:transparent;color:var(--primary);border:1px solid rgba(255,255,255,0.06)}
+    /* ========================================
+       Header
+       ======================================== */
+    
+    header {
+      background: var(--md-sys-color-surface-container);
+      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      transition: all var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+    }
+    
+    .brand {
+      display: flex;
+      gap: var(--md-sys-spacing-3);
+      align-items: center;
+    }
+    
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--md-sys-shape-corner-medium);
+      background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--md-sys-color-on-primary);
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: var(--md-sys-elevation-2);
+      transition: transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+                  box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+      box-shadow: var(--md-sys-elevation-3);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: var(--md-sys-typescale-title-large-font-size);
+      line-height: var(--md-sys-typescale-title-large-line-height);
+      font-weight: var(--md-sys-typescale-title-large-font-weight);
+      color: var(--md-sys-color-on-surface);
+    }
+    
+    p.lead {
+      margin: 0;
+      font-size: var(--md-sys-typescale-body-small-font-size);
+      line-height: var(--md-sys-typescale-body-small-line-height);
+      color: var(--md-sys-color-on-surface-variant);
+    }
 
-    .card{background:var(--card);color:var(--on-card);border-radius:var(--radius);padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.12);}
-    .list{margin-top:12px}
-    .item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;margin-bottom:8px}
-    .item:hover{background:linear-gradient(90deg,rgba(103,80,164,0.04),transparent)}
-    .icon{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#2b2540,#1b2230);display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700}
-    .meta{flex:1}
-    .meta .title{font-size:14px;font-weight:500}
-    .meta .sub{font-size:12px;color:var(--muted);} 
-    .actions{display:flex;gap:8px}
-    a.link{color:var(--primary);text-decoration:none;font-size:13px}
+    /* ========================================
+       Main Content
+       ======================================== */
+    
+    main {
+      padding: var(--md-sys-spacing-6);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-    .path{font-size:13px;color:var(--muted);margin-bottom:8px}
+    /* ========================================
+       Search & Controls
+       ======================================== */
+    
+    .search-row {
+      display: flex;
+      gap: var(--md-sys-spacing-3);
+      align-items: center;
+      margin-bottom: var(--md-sys-spacing-4);
+      flex-wrap: wrap;
+    }
+    
+    .search {
+      flex: 1;
+      min-width: 240px;
+      background: var(--md-sys-color-surface-container-high);
+      color: var(--md-sys-color-on-surface);
+      padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+      border-radius: var(--md-sys-shape-corner-extra-large);
+      display: flex;
+      gap: var(--md-sys-spacing-2);
+      align-items: center;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .search:focus-within {
+      border-color: var(--md-sys-color-primary);
+      box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.12);
+      background: var(--md-sys-color-surface-container-highest);
+    }
+    
+    .search input {
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: var(--md-sys-color-on-surface);
+      font-size: var(--md-sys-typescale-body-medium-font-size);
+      line-height: var(--md-sys-typescale-body-medium-line-height);
+      width: 100%;
+      font-family: inherit;
+    }
+    
+    .search input::placeholder {
+      color: var(--md-sys-color-on-surface-variant);
+      opacity: 0.7;
+    }
+    
+    .controls {
+      display: flex;
+      gap: var(--md-sys-spacing-2);
+      flex-wrap: wrap;
+    }
 
-    footer{padding:20px 24px;color:var(--muted);font-size:13px}
+    /* ========================================
+       Buttons
+       ======================================== */
+    
+    button, a.btn {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: var(--md-sys-typescale-label-large-font-size);
+      line-height: var(--md-sys-typescale-label-large-line-height);
+      font-weight: var(--md-sys-typescale-label-large-font-weight);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--md-sys-spacing-2);
+      transition: all var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Filled Button (Primary) */
+    button.btn, a.btn {
+      border: 0;
+      padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6);
+      border-radius: var(--md-sys-shape-corner-full);
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      box-shadow: var(--md-sys-elevation-0);
+      min-height: 40px;
+    }
+    
+    button.btn:hover, a.btn:hover {
+      box-shadow: var(--md-sys-elevation-1);
+      background: color-mix(in srgb, var(--md-sys-color-primary) 92%, var(--md-sys-color-on-primary) 8%);
+    }
+    
+    button.btn:active, a.btn:active {
+      box-shadow: var(--md-sys-elevation-0);
+      transform: scale(0.98);
+    }
+    
+    button.btn:focus-visible, a.btn:focus-visible {
+      outline: 2px solid var(--md-sys-color-primary);
+      outline-offset: 2px;
+    }
+    
+    /* Outlined Button (Secondary) */
+    button.ghost, a.ghost {
+      border: 1px solid var(--md-sys-color-outline);
+      padding: var(--md-sys-spacing-2) var(--md-sys-spacing-6);
+      border-radius: var(--md-sys-shape-corner-full);
+      background: transparent;
+      color: var(--md-sys-color-primary);
+      min-height: 40px;
+    }
+    
+    button.ghost:hover, a.ghost:hover {
+      background: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+      border-color: var(--md-sys-color-primary);
+    }
+    
+    button.ghost:active, a.ghost:active {
+      transform: scale(0.98);
+    }
+    
+    button.ghost:focus-visible, a.ghost:focus-visible {
+      outline: 2px solid var(--md-sys-color-primary);
+      outline-offset: 2px;
+    }
 
-    .empty{padding:40px;text-align:center;color:var(--muted)}
+    /* ========================================
+       Cards
+       ======================================== */
+    
+    .card {
+      background: var(--md-sys-color-surface-container-low);
+      color: var(--md-sys-color-on-surface);
+      border-radius: var(--md-sys-shape-corner-large);
+      padding: var(--md-sys-spacing-4);
+      box-shadow: var(--md-sys-elevation-1);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      transition: all var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+    }
+    
+    .card:hover {
+      box-shadow: var(--md-sys-elevation-2);
+    }
 
-    @media (max-width:600px){ header{padding:12px} main{padding:12px} }
+    /* ========================================
+       List Items
+       ======================================== */
+    
+    .list {
+      margin-top: var(--md-sys-spacing-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--md-sys-spacing-1);
+    }
+    
+    .item {
+      display: flex;
+      align-items: center;
+      gap: var(--md-sys-spacing-3);
+      padding: var(--md-sys-spacing-3);
+      border-radius: var(--md-sys-shape-corner-medium);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    }
+    
+    .item:hover {
+      background: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+    }
+    
+    .item:active {
+      background: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+    }
+    
+    .item:focus-visible {
+      outline: 2px solid var(--md-sys-color-primary);
+      outline-offset: -2px;
+    }
+    
+    .icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: var(--md-sys-shape-corner-small);
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: var(--md-sys-typescale-label-medium-font-size);
+      transition: transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+    }
+    
+    .item:hover .icon {
+      transform: scale(1.05);
+    }
+    
+    .meta {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .meta .title {
+      font-size: var(--md-sys-typescale-body-large-font-size);
+      line-height: var(--md-sys-typescale-body-large-line-height);
+      font-weight: var(--md-sys-typescale-title-medium-font-weight);
+      color: var(--md-sys-color-on-surface);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .meta .sub {
+      font-size: var(--md-sys-typescale-body-small-font-size);
+      line-height: var(--md-sys-typescale-body-small-line-height);
+      color: var(--md-sys-color-on-surface-variant);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    
+    .actions {
+      display: flex;
+      gap: var(--md-sys-spacing-2);
+      flex-shrink: 0;
+    }
+
+    /* ========================================
+       Path Breadcrumb
+       ======================================== */
+    
+    .path {
+      font-size: var(--md-sys-typescale-label-large-font-size);
+      line-height: var(--md-sys-typescale-label-large-line-height);
+      color: var(--md-sys-color-on-surface-variant);
+      margin-bottom: var(--md-sys-spacing-2);
+      font-family: 'Courier New', monospace;
+      padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+      background: var(--md-sys-color-surface-container-highest);
+      border-radius: var(--md-sys-shape-corner-small);
+      display: inline-block;
+    }
+
+    /* ========================================
+       Empty State
+       ======================================== */
+    
+    .empty {
+      padding: var(--md-sys-spacing-12) var(--md-sys-spacing-6);
+      text-align: center;
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: var(--md-sys-typescale-body-large-font-size);
+    }
+
+    /* ========================================
+       Footer
+       ======================================== */
+    
+    footer {
+      padding: var(--md-sys-spacing-6);
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: var(--md-sys-typescale-body-small-font-size);
+      text-align: center;
+      border-top: 1px solid var(--md-sys-color-outline-variant);
+      margin-top: var(--md-sys-spacing-8);
+    }
+    
+    footer code {
+      background: var(--md-sys-color-surface-container-high);
+      padding: 2px var(--md-sys-spacing-2);
+      border-radius: var(--md-sys-shape-corner-extra-small);
+      font-family: 'Courier New', monospace;
+      font-size: var(--md-sys-typescale-label-small-font-size);
+    }
+
+    /* ========================================
+       Floating Action Button (FAB)
+       ======================================== */
+    
+    .fab {
+      position: fixed;
+      bottom: var(--md-sys-spacing-4);
+      right: var(--md-sys-spacing-4);
+      width: 56px;
+      height: 56px;
+      border-radius: var(--md-sys-shape-corner-large);
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      border: 0;
+      box-shadow: var(--md-sys-elevation-3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+      z-index: 1000;
+    }
+    
+    .fab:hover {
+      box-shadow: var(--md-sys-elevation-4);
+      transform: scale(1.05);
+    }
+    
+    .fab:active {
+      box-shadow: var(--md-sys-elevation-2);
+      transform: scale(0.95);
+    }
+    
+    .fab:focus-visible {
+      outline: 2px solid var(--md-sys-color-primary);
+      outline-offset: 2px;
+    }
+
+    /* ========================================
+       Ripple Effect
+       ======================================== */
+    
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(0);
+      animation: ripple-animation 600ms var(--md-sys-motion-easing-standard);
+      pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* ========================================
+       Responsive Design
+       ======================================== */
+    
+    @media (max-width: 600px) {
+      header {
+        padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+      }
+      
+      main {
+        padding: var(--md-sys-spacing-4);
+      }
+      
+      .search-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .controls {
+        width: 100%;
+        justify-content: stretch;
+      }
+      
+      .controls button {
+        flex: 1;
+      }
+      
+      h1 {
+        font-size: var(--md-sys-typescale-title-medium-font-size);
+      }
+      
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .fab {
+        bottom: var(--md-sys-spacing-3);
+        right: var(--md-sys-spacing-3);
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .actions {
+        flex-direction: column;
+        gap: var(--md-sys-spacing-1);
+      }
+      
+      .actions button,
+      .actions a {
+        width: 100%;
+        font-size: var(--md-sys-typescale-label-small-font-size);
+        padding: var(--md-sys-spacing-1) var(--md-sys-spacing-3);
+        min-height: 32px;
+      }
+    }
+
+    /* ========================================
+       Accessibility
+       ======================================== */
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    :focus-visible {
+      outline: 2px solid var(--md-sys-color-primary);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -92,9 +768,8 @@
           <div style="width:8px"></div>
         </div>
         <div class="controls">
-          <button id="refresh" class="btn">Refresh</button>
-          <button id="toggle-github" class="ghost">GitHub API</button>
-          <button id="theme-toggle" class="ghost">Theme</button>
+          <button id="refresh" class="btn" aria-label="Refresh file list">Refresh</button>
+          <button id="toggle-github" class="ghost" aria-label="Toggle data source">GitHub API</button>
         </div>
       </div>
       <div class="path" id="current-path">/</div>
@@ -117,17 +792,32 @@
     <div>Repository: <code>RinCynar/dl</code> · Branch: <code>main</code></div>
   </footer>
 
+  <!-- Floating Action Button for Theme Toggle -->
+  <button id="theme-toggle" class="fab" aria-label="Toggle theme">
+    <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Moon icon (dark mode) -->
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
   <script>
-    // Basic configuration — edit to adapt to another repository
+    // ========================================
+    // Configuration
+    // ========================================
     const OWNER = 'RinCynar';
     const REPO = 'dl';
     const BRANCH = 'main';
 
-    // State
-    let useGithubApi = true; // can switch to local file-index.json
+    // ========================================
+    // State Management
+    // ========================================
+    let useGithubApi = true;
     let cache = {};
     let currentPath = '';
 
+    // ========================================
+    // DOM Elements
+    // ========================================
     const qEl = document.getElementById('q');
     const listEl = document.getElementById('list');
     const emptyEl = document.getElementById('empty');
@@ -135,83 +825,187 @@
     const refreshBtn = document.getElementById('refresh');
     const toggleBtn = document.getElementById('toggle-github');
     const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-    function setPath(p){ currentPath = p.replace(/^\/+|\/+$/g,''); pathEl.textContent = '/' + (currentPath||''); }
+    // ========================================
+    // Ripple Effect
+    // ========================================
+    function createRipple(event) {
+      const button = event.currentTarget;
+      const ripple = document.createElement('span');
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
 
-    function toRawUrl(path){ return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}` }
-    function toGithubUrl(path){ return `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}` }
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
 
-    async function fetchGithubContents(path){
+      button.appendChild(ripple);
+
+      ripple.addEventListener('animationend', () => {
+        ripple.remove();
+      });
+    }
+
+    // Add ripple to all buttons
+    function addRippleToButtons() {
+      document.querySelectorAll('button, a.btn, a.ghost').forEach(btn => {
+        btn.addEventListener('click', createRipple);
+      });
+    }
+
+    // ========================================
+    // Path Management
+    // ========================================
+    function setPath(p) {
+      currentPath = p.replace(/^\/+|\/+$/g, '');
+      pathEl.textContent = '/' + (currentPath || '');
+    }
+
+    // ========================================
+    // URL Helpers
+    // ========================================
+    function toRawUrl(path) {
+      return `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}`;
+    }
+
+    function toGithubUrl(path) {
+      return `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/file/${path.split('/').map(encodeURIComponent).join('/')}`;
+    }
+
+    // ========================================
+    // Data Fetching
+    // ========================================
+    async function fetchGithubContents(path) {
       const apiPath = 'file' + (path ? `/${path}` : '');
       const api = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${apiPath}?ref=${BRANCH}`;
       const res = await fetch(api);
-      if(!res.ok) throw new Error('GitHub API error: ' + res.status);
+      if (!res.ok) throw new Error('GitHub API error: ' + res.status);
       return await res.json();
     }
 
-    async function fetchLocalIndex(){
+    async function fetchLocalIndex() {
       const res = await fetch('/file-index.json');
-      if(!res.ok) throw new Error('file-index.json not found');
+      if (!res.ok) throw new Error('file-index.json not found');
       return await res.json();
     }
 
-    function renderList(items){
+    // ========================================
+    // Rendering
+    // ========================================
+    function renderList(items) {
       listEl.innerHTML = '';
-      if(!items || items.length===0){ emptyEl.style.display='block'; return }
-      emptyEl.style.display='none';
+      if (!items || items.length === 0) {
+        emptyEl.style.display = 'block';
+        return;
+      }
+      emptyEl.style.display = 'none';
 
-      items.sort((a,b)=>{ // folders first
-        if(a.type===b.type) return a.name.localeCompare(b.name);
-        return a.type==='dir'?-1:1;
+      items.sort((a, b) => {
+        if (a.type === b.type) return a.name.localeCompare(b.name);
+        return a.type === 'dir' ? -1 : 1;
       });
 
-      for(const it of items){
-        const row = document.createElement('div'); row.className='item';
-        const ic = document.createElement('div'); ic.className='icon';
-        ic.textContent = it.type==='dir' ? '📁' : (it.name.split('.').pop().slice(0,2).toUpperCase());
-        const meta = document.createElement('div'); meta.className='meta';
-        const title = document.createElement('div'); title.className='title';
-        title.textContent = it.name;
-        const sub = document.createElement('div'); sub.className='sub';
-        if(it.type==='dir') sub.textContent = 'Directory';
-        else sub.textContent = `${(it.size||0)} bytes · ${it.path||''}`;
-        meta.appendChild(title); meta.appendChild(sub);
+      for (const it of items) {
+        const row = document.createElement('div');
+        row.className = 'item';
+        row.setAttribute('role', 'button');
+        row.setAttribute('tabindex', '0');
 
-        const actions = document.createElement('div'); actions.className='actions';
-        if(it.type==='dir'){
-          const open = document.createElement('button'); open.className='ghost'; open.textContent='Open';
-          open.onclick = ()=>{ navigate(it.path); };
+        const ic = document.createElement('div');
+        ic.className = 'icon';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.textContent = it.type === 'dir' ? '📁' : (it.name.split('.').pop().slice(0, 2).toUpperCase());
+
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+
+        const title = document.createElement('div');
+        title.className = 'title';
+        title.textContent = it.name;
+
+        const sub = document.createElement('div');
+        sub.className = 'sub';
+        if (it.type === 'dir') {
+          sub.textContent = 'Directory';
+        } else {
+          sub.textContent = `${(it.size || 0).toLocaleString()} bytes · ${it.path || ''}`;
+        }
+
+        meta.appendChild(title);
+        meta.appendChild(sub);
+
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+
+        if (it.type === 'dir') {
+          const open = document.createElement('button');
+          open.className = 'ghost';
+          open.textContent = 'Open';
+          open.setAttribute('aria-label', `Open ${it.name} directory`);
+          open.onclick = (e) => {
+            e.stopPropagation();
+            navigate(it.path);
+          };
           actions.appendChild(open);
         } else {
-          const dl = document.createElement('a'); dl.className='btn'; dl.textContent='Download';
+          const dl = document.createElement('a');
+          dl.className = 'btn';
+          dl.textContent = 'Download';
           dl.href = toRawUrl(it.path);
           dl.target = '_blank';
-          dl.rel='noopener';
+          dl.rel = 'noopener';
+          dl.setAttribute('aria-label', `Download ${it.name}`);
           actions.appendChild(dl);
 
-          const view = document.createElement('a'); view.className='ghost'; view.textContent='GitHub';
+          const view = document.createElement('a');
+          view.className = 'ghost';
+          view.textContent = 'GitHub';
           view.href = toGithubUrl(it.path);
-          view.target='_blank'; view.rel='noopener';
+          view.target = '_blank';
+          view.rel = 'noopener';
+          view.setAttribute('aria-label', `View ${it.name} on GitHub`);
           actions.appendChild(view);
         }
 
-        row.appendChild(ic); row.appendChild(meta); row.appendChild(actions);
+        row.appendChild(ic);
+        row.appendChild(meta);
+        row.appendChild(actions);
         listEl.appendChild(row);
+
+        // Add keyboard support for directory items
+        if (it.type === 'dir') {
+          row.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              navigate(it.path);
+            }
+          });
+        }
       }
+
+      // Re-add ripple effects to newly created buttons
+      addRippleToButtons();
     }
 
-    async function listPath(path){
-      setPath(path||'');
-      if(useGithubApi){
-        try{
-          const data = await fetchGithubContents(path||'');
-          const items = data.map(d=>({
+    // ========================================
+    // Navigation
+    // ========================================
+    async function listPath(path) {
+      setPath(path || '');
+      if (useGithubApi) {
+        try {
+          const data = await fetchGithubContents(path || '');
+          const items = data.map(d => ({
             name: d.name,
             type: d.type,
             path: d.path.startsWith('file/') ? d.path.substring(5) : d.path,
-            size:d.size||0
+            size: d.size || 0
           }));
-          cache[(path||'')] = items;
+          cache[(path || '')] = items;
 
           if (path) {
             const parentPath = path.lastIndexOf('/') > -1 ? path.substring(0, path.lastIndexOf('/')) : '';
@@ -221,67 +1015,117 @@
             renderList(items);
           }
           return;
-        }catch(e){
-          console.warn('GitHub API failed:',e);
+        } catch (e) {
+          console.warn('GitHub API failed:', e);
         }
       }
 
-      try{
+      try {
         const idx = await fetchLocalIndex();
-        const key = (path||'');
+        const key = (path || '');
         const items = idx[key] || [];
 
         if (key) {
-            const parentPath = key.lastIndexOf('/') > -1 ? key.substring(0, key.lastIndexOf('/')) : '';
-            const upItem = { name: '..', type: 'dir', path: parentPath, size: 0 };
-            renderList([upItem, ...items]);
+          const parentPath = key.lastIndexOf('/') > -1 ? key.substring(0, key.lastIndexOf('/')) : '';
+          const upItem = { name: '..', type: 'dir', path: parentPath, size: 0 };
+          renderList([upItem, ...items]);
         } else {
-            renderList(items);
+          renderList(items);
         }
         return;
-      }catch(e){
-        console.error('local index failed',e);
-        listEl.innerHTML=''; emptyEl.style.display='block'; emptyEl.textContent='Unable to load file list: both GitHub API and file-index.json are unavailable.';
+      } catch (e) {
+        console.error('local index failed', e);
+        listEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        emptyEl.textContent = 'Unable to load file list: both GitHub API and file-index.json are unavailable.';
       }
     }
 
-    function navigate(path){ listPath(path); }
+    function navigate(path) {
+      listPath(path);
+    }
 
-    // Search / filter
-    function applyFilter(){
-      const q = (qEl.value||'').toLowerCase();
-      if(!q){ // show cached current
-        if(cache[currentPath||'']) renderList(cache[currentPath||'']);
+    // ========================================
+    // Search & Filter
+    // ========================================
+    function applyFilter() {
+      const q = (qEl.value || '').toLowerCase();
+      if (!q) {
+        if (cache[currentPath || '']) renderList(cache[currentPath || '']);
         return;
       }
-      const items = (cache[currentPath||'']||[]).filter(it=> (it.name||'').toLowerCase().includes(q) || (it.path||'').toLowerCase().includes(q));
+      const items = (cache[currentPath || ''] || []).filter(it =>
+        (it.name || '').toLowerCase().includes(q) || (it.path || '').toLowerCase().includes(q)
+      );
       renderList(items);
     }
 
-    qEl.addEventListener('input', ()=>{ applyFilter(); });
-    qEl.addEventListener('keydown', (e)=>{ if(e.key==='Enter') applyFilter(); });
-
-    refreshBtn.addEventListener('click', ()=>{ cache={}; listPath(currentPath); });
-    toggleBtn.addEventListener('click', ()=>{ useGithubApi = !useGithubApi; toggleBtn.textContent = useGithubApi ? 'GitHub API' : 'local JSON'; cache={}; listPath(currentPath); });
-
-    // Theme handling: default dark, persisted in localStorage
-    function applyTheme(t){
-      document.documentElement.setAttribute('data-theme', t);
-      themeBtn.textContent = t === 'dark' ? 'Light Mode' : 'Dark Mode';
-      localStorage.setItem('theme', t);
+    // ========================================
+    // Theme Management
+    // ========================================
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        // Moon icon for dark mode
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      } else {
+        // Sun icon for light mode
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+      }
     }
-    themeBtn.addEventListener('click', ()=>{
+
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      updateThemeIcon(t);
+      localStorage.setItem('theme', t);
+      themeBtn.setAttribute('aria-label', `Switch to ${t === 'dark' ? 'light' : 'dark'} mode`);
+    }
+
+    // ========================================
+    // Event Listeners
+    // ========================================
+    qEl.addEventListener('input', () => {
+      applyFilter();
+    });
+
+    qEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') applyFilter();
+    });
+
+    refreshBtn.addEventListener('click', () => {
+      cache = {};
+      listPath(currentPath);
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      useGithubApi = !useGithubApi;
+      toggleBtn.textContent = useGithubApi ? 'GitHub API' : 'local JSON';
+      toggleBtn.setAttribute('aria-label', `Using ${useGithubApi ? 'GitHub API' : 'local JSON'}, click to toggle`);
+      cache = {};
+      listPath(currentPath);
+    });
+
+    themeBtn.addEventListener('click', () => {
       const current = localStorage.getItem('theme') || 'dark';
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
     });
 
-    // Initial load
-    (async ()=>{
-      // set theme (default dark)
+    // ========================================
+    // Initialization
+    // ========================================
+    (async () => {
+      // Set theme (default dark)
       const saved = localStorage.getItem('theme') || 'dark';
       applyTheme(saved);
+      
+      // Set initial button states
       toggleBtn.textContent = useGithubApi ? 'GitHub API' : 'local JSON';
+      toggleBtn.setAttribute('aria-label', `Using ${useGithubApi ? 'GitHub API' : 'local JSON'}, click to toggle`);
+      
+      // Add ripple effects
+      addRippleToButtons();
+      
+      // Load initial file list
       await listPath('');
     })();
 
